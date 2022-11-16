@@ -22,39 +22,25 @@ void findWaitingTime(int processes[], int n,
 		{
 			if (rem_bt[i] > 0)
 			{
-				done = false; // There is a pending process
+				done = false; 
 
 				if (rem_bt[i] > quantum)
 				{
-					// Increase the value of t i.e. shows
-					// how much time a process has been processed
+					
 					t += quantum;
-
-					// Decrease the burst_time of current process
-					// by quantum
 					rem_bt[i] -= quantum;
 				}
 
-				// If burst time is smaller than or equal to
-				// quantum. Last cycle for this process
 				else
 				{
-					// Increase the value of t i.e. shows
-					// how much time a process has been processed
 					t = t + rem_bt[i];
 
-					// Waiting time is current time minus time
-					// used by this process
 					wt[i] = t - bt[i];
-
-					// As the process gets fully executed
-					// make its remaining burst time = 0
 					rem_bt[i] = 0;
 				}
 			}
 		}
 
-		// If all processes are done
 		if (done == true)
 		break;
 	}
